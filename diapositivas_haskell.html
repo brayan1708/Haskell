@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación sobre Haskell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('logoudec.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        .slide {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            z-index: 2;
+        }
+        .active {
+            display: block;
+            opacity: 1;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+        p {
+            font-size: 1.8em;
+            margin: 10px 0;
+            text-align: left;
+        }
+        .large-text {
+            font-size: 1.9em;
+        }
+        .large-code {
+            font-size: 1.3em;
+            text-align: left;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .image-container img {
+            width: 80%; /* Ajuste del tamaño de la imagen */
+            max-width: 600px; /* Máximo ancho para evitar que se desborde */
+            height: auto;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffffff; /* Borde blanco alrededor de la imagen */
+            padding: 10px; /* Espaciado interno para el borde */
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo ligeramente transparente */
+        }
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            z-index: 2;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .progress {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            font-size: 18px;
+            z-index: 2;
+        }
+        button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        .slide:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .slide:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .text-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .text-image h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="progress">Diapositiva <span id="slide-number">1</span> de 14</div>
+
+<!-- Diapositivas -->
+<div class="slide active">
+    <img src="haskell_logo.png" alt="Logo de Haskell">
+    <h1>Introducción a Haskell</h1>
+    <h2>Explorando el poder de la programación funcional</h2>
+    <p>Haskell es un lenguaje de programación que enfatiza la programación funcional, permitiendo a los desarrolladores escribir código más limpio y mantenible.</p>
+    <p>Objetivo de la presentación: entender los fundamentos de Haskell y su aplicación en el mundo real.</p>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>¿Qué es Haskell?</h2>
+        <p>Haskell es un lenguaje de programación funcional, conocido por su pureza y expresividad.</p>
+        <p>Usado por empresas como Facebook y Google, Haskell permite desarrollar sistemas complejos de manera eficiente.</p>
+        <p>Su enfoque en la inmutabilidad y las funciones de orden superior lo hacen ideal para tareas de procesamiento de datos y análisis.</p>
+    </div>
+    <div class="image-container">
+        <img src="programacion_funcional.png" alt="Programación Funcional">
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Características Clave</h2>
+        <div style="text-align: left;">Haskell se caracteriza por:</div>
+        <ul style="text-align: left;">
+            <li class="large-text"><strong>Pureza:</strong> Las funciones no tienen efectos secundarios.</li>
+            <li class="large-text"><strong>Sistema de Tipos:</strong> Tipos estáticos que ayudan a prevenir errores.</li>
+            <li class="large-text"><strong>Evaluación Perezosa:</strong> Solo se evalúan las expresiones cuando son necesarias.</li>
+            <li class="large-text"><strong>Expresividad:</strong> Permite expresar ideas complejas de manera concisa.</li>
+        </ul>
+    </div>
+    <div class="image-container">
+        <img src="caracteristicas.png" alt="Características de Haskell">
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <img src="dos.png" alt="Imagen dos" style="width: 50%; margin-bottom: 20px;">
+        <h2>Tipos Estáticos y Sistema de Tipos Fuerte</h2>
+        <pre><code>data Color = Rojo | Verde | Azul deriving (Show)
+descripcionColor :: Color -> String</code></pre>
+        <p>El sistema de tipos fuerte de Haskell ayuda a detectar errores en tiempo de compilación, lo que reduce la cantidad de errores en tiempo de ejecución.</p>
+        <p>Los tipos de datos personalizados permiten modelar conceptos del mundo real de manera efectiva.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Evaluación Perezosa</h2>
+        <img src="eperesosa.png" alt="Evaluación Perezosa" style="width: 50%; margin-bottom: 20px;">
+        <pre><code>fibonacci :: [Int]
+fibonacci = 0 : 1 : zipWith (+) fibonacci (tail fibonacci)</code></pre>
+        <p>La evaluación perezosa permite crear estructuras de datos infinitas y optimizar el rendimiento al evitar cálculos innecesarios.</p>
+        <p>Esto es especialmente útil en cálculos matemáticos y generación de secuencias.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Concisión y Expresividad</h2>
+        <pre><code>aplicarFuncion :: (a -> b) -> [a] -> [b]
+aplicarFuncion f xs = map f xs</code></pre>
+        <p>Haskell permite expresar ideas complejas de forma clara y concisa, mejorando la legibilidad del código.</p>
+        <p>Las funciones de orden superior son una herramienta poderosa para manipular colecciones de datos.</p>
+    </div>
+    <div class="image-container">
+        <img src="expres.png" alt="Expresividad en Haskell" style="width: 60%; margin-bottom: 20px;">
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Ejemplo de Expresión en Haskell</h2>
+        <img src="Function.png" alt="Función en Haskell" style="width: 60%; margin-bottom: 20px;">
+        <pre><code>miExpresion :: Int -> Int
+miExpresion x = x * x + 1</code></pre>
+        <p>Esta expresión es un ejemplo de una función simple en Haskell.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Ejemplo de Estructura de Datos Personalizada</h2>
+        <div class="image-container">
+            <img src="datos.png" alt="Estructura de Datos" style="width: 80%; margin-bottom: 20px;">
+        </div>
+        <pre><code>data Forma = Circulo Float | Rectangulo Float Float deriving (Show)
+area (Circulo r) = pi * r^2
+area (Rectangulo l w) = l * w</code></pre>
+        <p>Las estructuras de datos personalizadas permiten modelar conceptos complejos, como formas geométricas, de manera efectiva.</p>
+        <p>Esto facilita la extensión del código y la implementación de nuevas características.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Recursos para Aprender Más</h2>
+        <p>Libros:</p>
+        <ul>
+            <li><em>Learn You a Haskell</em></li>
+            <li><em>Real World Haskell</em></li>
+        </ul>
+        <p>Plataformas:</p>
+        <ul>
+            <li>Exercism</li>
+            <li>HackerRank</li>
+            <li>Coursera</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Resumen Final</h2>
+        <p>Haskell es un lenguaje poderoso que promueve la programación funcional.</p>
+        <p>Sus características únicas, como la pureza y el sistema de tipos fuerte, lo hacen ideal para desarrollar software confiable y eficiente.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>¿Preguntas?</h2>
+        <p>Espacio para preguntas y respuestas.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="text-image">
+        <h2>Gracias por su atención</h2>
+        <p>Espero que esta introducción a Haskell haya sido interesante.</p>
+    </div>
+</div>
+
+<div class="navigation">
+    <button id="prevButton" onclick="prevSlide()">Anterior</button>
+    <button id="nextButton" onclick="nextSlide()">Siguiente</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slideNumberDisplay = document.getElementById('slide-number');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        slideNumberDisplay.textContent = index + 1;
+
+        prevButton.disabled = index === 0;
+        nextButton.disabled = index === slides.length - 1;
+    }
+
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+    }
+
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>
